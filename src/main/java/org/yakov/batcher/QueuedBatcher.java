@@ -76,7 +76,6 @@ public abstract class QueuedBatcher<I, J, T, R> implements Batcher<I, J, T, R> {
     }
 
     //TODO
-    @Override
     public boolean isShutdown() {
         return executor.isShutdown();
     }
@@ -88,8 +87,8 @@ public abstract class QueuedBatcher<I, J, T, R> implements Batcher<I, J, T, R> {
 
     private Runnable submitBatch() {
         return () -> {
-            var jobs = new ArrayList<JobResult<J, R>>(props.getQueueCapacity());
-            var postProcessCount = queue.drainTo(jobs, props.getQueueCapacity());
+            var jobs = new ArrayList<JobResult<J, R>>(props.getBatchSize());
+            var postProcessCount = queue.drainTo(jobs, props.getBatchSize());
             batchProcessor.process(jobs);
 
             counters.incrementProcessed(BigInteger.valueOf(postProcessCount));

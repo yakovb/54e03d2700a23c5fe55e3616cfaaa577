@@ -13,7 +13,7 @@ public class StringJobResultCreator implements JobResultCreator<UUID, Long, Stri
     @Override
     public JobResult<Long, String> shutdownResult(Job<UUID, String> job) {
         var result = new StringJobResult(random.nextLong(), job);
-        result.populateError(JobResult.Error.SUBMIT_FAILED);
+        result.populateError(JobResult.Error.PROCESSOR_SHUTDOWN);
         return result;
     }
 

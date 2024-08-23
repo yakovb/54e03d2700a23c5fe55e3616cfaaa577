@@ -6,7 +6,6 @@ import org.yakov.jobs.JobResult;
 import java.util.Objects;
 import java.util.Optional;
 
-//TODO not thread safe
 public class StringJobResult implements JobResult<Long, String> {
     private final Long id;
     private final Job<?, ?> job;
