@@ -16,9 +16,18 @@ public interface JobResultCreator<I, J, T, R> {
      */
     JobResult<J, R> shutdownResult(Job<I, T> job);
 
+    /**
+     * Create a result indicated a pending job, i.e. one that has not yet been processed.
+     */
     JobResult<J, R> pendingResult(Job<I, T> job);
 
+    /**
+     * Create a result indicating an error, i.e. a job that was processed and resulted in an error.
+     */
     JobResult<J, R> errorResult(Job<I, T> job, JobResult.Error error);
 
+    /**
+     * Create a result indicating a successfully processed job.
+     */
     JobResult<J, R> successResult(Job<I, T> job, R result);
 }

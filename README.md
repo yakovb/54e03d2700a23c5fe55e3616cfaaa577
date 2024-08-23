@@ -43,11 +43,15 @@ The better option is to notice many jobs failing to submit and either:
 You can also change all of these parameters simultaneously. 
 
 # Observability
+## Counters
 The `Batcher` exposes a `Counters` class which increments a set of counters when interesting operations occur.
 Currently we track:
 * number of submitted jobs,
 * numer of processed jobs,
 * number of failed jobs, i.e. those that did not process.
+
+## Logging
+The library uses SL4J as the logging framework, so it will pick up whatever logging implementation (e.g. Logback)
 
 # Examples
 You can find an example implementation in the `example` package.

@@ -1,14 +1,17 @@
 package org.yakov.example;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.yakov.batcher.BatchProcessor;
 import org.yakov.batcher.BatcherProperties;
 import org.yakov.batcher.Counters;
 import org.yakov.batcher.QueuedBatcher;
 
 import java.util.UUID;
-import java.util.logging.Logger;
 
 public class StringQueuedBatcher extends QueuedBatcher<UUID, Long, String, String> {
+
+    private static final Logger log = LoggerFactory.getLogger(StringQueuedBatcher.class);
 
     public StringQueuedBatcher(BatchProcessor<Long, String> batchProcessor,
                                BatcherProperties props,
@@ -19,6 +22,6 @@ public class StringQueuedBatcher extends QueuedBatcher<UUID, Long, String, Strin
 
     @Override
     protected Logger getLogger() {
-        return null;
+        return log;
     }
 }
